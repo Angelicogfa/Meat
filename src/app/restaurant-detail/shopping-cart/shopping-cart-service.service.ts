@@ -5,30 +5,31 @@ import { MenuItem } from '../menu-item/menu-item.model';
 @Injectable()
 export class ShoppingCartServiceService {
 
-  itens: CartItem[] = [];
+  items: CartItem[] = [];
 
   constructor() { }
 
   clear() {
-    this.itens = [];
+    this.items = [];
   }
 
   total(): number {
-    return this.itens
-    .map(t => t.value())
-    .reduce((prev, value) => prev + value, 0);
+    return this.items
+      .map(t => t.value())
+      .reduce((prev, value) => prev + value, 0);
   }
 
   addItem(item: MenuItem) {
-    let foundItem = this.itens.find((mItem) => mItem.menuItem.id == item.id);
+    console.log('addItem service raise');
+    let foundItem = this.items.find((mItem) => mItem.menuItem.id == item.id);
     if (foundItem) {
       foundItem.incrementQuantity();
     } else {
-      this.itens.push(new CartItem(item));
+      this.items.push(new CartItem(item));
     }
   }
 
   removeItem(item: any) {
-    this.itens.slice(this.itens.indexOf(item), 1);
+    this.items.slice(this.items.indexOf(item), 1);
   }
 }

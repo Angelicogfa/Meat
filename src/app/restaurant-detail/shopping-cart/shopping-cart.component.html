@@ -5,15 +5,15 @@
     <h3 class="box-title">Carrinho</h3>
   </div>
   <div class="box-body">
-    <div *ngIf="!items().lenght">
+    <div *ngIf="!items().length">
       <p>Seu carrinho está vazio</p>
     </div>
-    <div *ngIf="items().lenght" class="table-responsive">
+    <div *ngIf="items().length" class="table-responsive">
       <table class="table">
         <tbody>
           <tr *ngFor="let item of items()">
             <th style="width:60%">({{item.quantity}} x ) {{item.menuItem.name}}</th>
-            <td class="text-right">{{item.value()}}</td>
+            <td class="text-right">{{item.value() | currency: 'BRL' : true}}</td>
             <td class="text-right">
               <a (click)="removeItem(item)" class="btn btn-sm danger">
                 <i class="fa fa-remove"></i>
@@ -23,13 +23,13 @@
           <tr>
             <th>Total:</th>
 
-            <td class="text-right">{{total()}}</td>
+            <td class="text-right">{{total() | currency:'BRL':true}}</td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
-  <div class="box-footer" *ngIf="items().lenght">
+  <div class="box-footer" *ngIf="items().length">
     <div class="pull-right">
       <button (click)="clear()" type="button" class="btn btn-danger">
         <i class="fa fa-trash"></i> Limpar

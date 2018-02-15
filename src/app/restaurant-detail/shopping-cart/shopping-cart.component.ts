@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ShoppingCartServiceService } from './shopping-cart-service.service';
+import { CartItem } from './cart-item';
 
 @Component({
   selector: 'mt-shopping-cart',
@@ -12,8 +13,9 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
   }
 
-  items(): any[] {
-    return this.shoppingCartService.itens;
+  items(): CartItem[] {
+    console.log('return itens');
+    return this.shoppingCartService.items;
   }
 
   total(): number {
@@ -29,6 +31,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   addItem(item: any) {
+    console.log('addItem raise');
     this.shoppingCartService.addItem(item);
   }
 }

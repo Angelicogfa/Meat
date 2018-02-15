@@ -5,10 +5,8 @@
     </h1>
 </section>
 
-
-<section *ngIf="restaurant" class="content">
-
-    <div class="row">
+<section class="content">
+    <div *ngIf="restaurant" class="row">
         <div class="col-xs-12">
             <div class="box box-solid">
                 <div class="box-header with-border">
@@ -46,10 +44,7 @@
         </div>
         <!-- /.col-xs-12 -->
     </div>
-
-
     <div class="row">
-       <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
     </div>
-
 </section>
