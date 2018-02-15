@@ -16,6 +16,8 @@ export class MenuItemComponent implements OnInit {
   }
 
   emitAddEvent() {
+    console.log('emitAddEvent raise');
+    
     this.add.emit(this.menuItem);
   }
 }
