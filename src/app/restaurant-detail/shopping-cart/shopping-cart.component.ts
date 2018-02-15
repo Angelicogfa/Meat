@@ -12,12 +12,23 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
   }
 
-  items():any[]{
+  items(): any[] {
     return this.shoppingCartService.itens;
   }
 
-  total():number{
+  total(): number {
     return this.shoppingCartService.total();
   }
 
+  clear() {
+    this.shoppingCartService.clear();
+  }
+
+  removeItem(item: any) {
+    this.shoppingCartService.removeItem(item);
+  }
+
+  addItem(item: any) {
+    this.shoppingCartService.addItem(item);
+  }
 }
