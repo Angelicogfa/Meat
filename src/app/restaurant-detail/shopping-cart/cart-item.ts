@@ -16,7 +16,10 @@ export class CartItem {
     }
 
     decrementQuantity(quantity: number = 1) {
-        if (this.quantity >= quantity)
-            this.quantity -= quantity;
+
+        this.quantity -= quantity;
+        if (this.quantity < 0) { 
+            this.quantity = 0;
+        }
     }
 }

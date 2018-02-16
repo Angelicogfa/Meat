@@ -6,7 +6,7 @@ import { NgModel } from '@angular/forms';
   templateUrl: './input.component.html',
 })
 export class InputComponent implements OnInit, AfterContentInit {
-  
+
   @Input() label: string;
   @Input() successMessage: string = 'Ok';
   @Input() errorMessage: string;
@@ -21,9 +21,16 @@ export class InputComponent implements OnInit, AfterContentInit {
 
   ngAfterContentInit(): void {
     this.input = this.model;
-    if(this.input === undefined){
+    if (this.input === undefined) {
       throw new Error('Esse componente precisa ser usado com diretiva ngModel');
     }
+  }
 
+  hasError(): boolean {
+    return !this.input.valid && (this.input.dirty || this.input.touched);
+  }
+
+  hasValid(): boolean {
+    return this.input.valid && (this.input.dirty || this.input.touched);
   }
 }

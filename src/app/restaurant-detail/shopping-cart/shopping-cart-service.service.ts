@@ -23,13 +23,24 @@ export class ShoppingCartServiceService {
     console.log('addItem service raise');
     let foundItem = this.items.find((mItem) => mItem.menuItem.id == item.id);
     if (foundItem) {
-      foundItem.incrementQuantity();
+      this.increaseQty(foundItem);
     } else {
       this.items.push(new CartItem(item));
     }
   }
 
-  removeItem(item: any) {
-    this.items.slice(this.items.indexOf(item), 1);
+  removeItem(item: CartItem) {
+    let index = this.items.indexOf(item);
+    this.items.slice(index, 1);
+  }
+
+  increaseQty(item: CartItem) {
+    item.incrementQuantity();
+  }
+
+  decreaseQty(item: CartItem) {
+    item.decrementQuantity();
+    if (item.quantity === 0)
+      this.removeItem(item);
   }
 }
