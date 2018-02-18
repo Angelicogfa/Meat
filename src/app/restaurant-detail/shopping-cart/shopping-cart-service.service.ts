@@ -14,9 +14,11 @@ export class ShoppingCartServiceService {
   }
 
   total(): number {
-    return this.items
+    const total =  this.items
       .map(t => t.value())
       .reduce((prev, value) => prev + value, 0);
+      console.log(`Total ${total}`);
+      return total;
   }
 
   addItem(item: MenuItem) {
@@ -30,8 +32,8 @@ export class ShoppingCartServiceService {
   }
 
   removeItem(item: CartItem) {
-    let index = this.items.indexOf(item);
-    this.items.slice(index, 1);
+    this.items.splice(this.items.indexOf(item), 1);
+    console.log(this.items.length);
   }
 
   increaseQty(item: CartItem) {
