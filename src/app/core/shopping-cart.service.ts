@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { CartItem } from './cart-item';
-import { MenuItem } from '../menu-item/menu-item.model';
+import { CartItem } from '../restaurant-detail/shopping-cart/cart-item';
+import { MenuItem } from '../restaurant-detail/menu-item/menu-item.model';
 
 @Injectable()
-export class ShoppingCartServiceService {
+export class ShoppingCartService {
 
   items: CartItem[] = [];
 

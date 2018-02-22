@@ -1,7 +1,7 @@
-import { ShoppingCartServiceService } from "../restaurant-detail/shopping-cart/shopping-cart-service.service";
+import { ShoppingCartService } from "./shopping-cart.service";
 import { Injectable } from "@angular/core";
 import { CartItem } from "../restaurant-detail/shopping-cart/cart-item";
-import { Order, OrderItem } from "./order.model";
+import { Order, OrderItem } from "../order/order.model";
 import { Observable } from "rxjs/Observable";
 import { Http, Headers, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -14,7 +14,7 @@ export class OrderService {
 
     constructor(
         private http: Http,
-        private cartService: ShoppingCartServiceService) {
+        private cartService: ShoppingCartService) {
 
     }
 

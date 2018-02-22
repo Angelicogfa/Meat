@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RadioOption } from '../shared/radio/radio-options.model';
-import { OrderService } from './order-service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
 
 import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
+import { OrderService } from '../core/order.service';
 
 @Component({
   selector: 'mt-order',
