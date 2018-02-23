@@ -5,8 +5,10 @@ import { RestaurantDetailComponent } from "./restaurant-detail/restaurant-detail
 import { MenuComponent } from "./restaurant-detail/menu/menu.component";
 import { ReviewsComponent } from "./restaurant-detail/reviews/reviews.component";
 import { OrderSumarryComponent } from "./order-sumarry/order-sumarry.component";
+import { NotFoundComponent } from "./not-found/not-found.component";
 
 export const ROUTES: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'restaurants', component: RestaurantesComponent },
     {
@@ -17,8 +19,8 @@ export const ROUTES: Routes = [
             { path: 'reviews', component: ReviewsComponent },
         ]
     },
-    { path: 'order', loadChildren:'./order/order.module#OrderModule' },
+    { path: 'order', loadChildren: './order/order.module#OrderModule' },
     { path: 'order-summary', component: OrderSumarryComponent },
-    { path: 'about', loadChildren:'./about/about.module#AboutModule' },
-    { path: '', redirectTo: 'home', pathMatch: 'full' }
+    { path: 'about', loadChildren: './about/about.module#AboutModule' },
+    { path: '**', component: NotFoundComponent }
 ]

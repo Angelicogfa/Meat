@@ -3,6 +3,7 @@ import { NgModule, LOCALE_ID } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { SharedModule } from './shared/shared.module';
 
@@ -22,6 +23,7 @@ import { ShoppingCartComponent } from './restaurant-detail/shopping-cart/shoppin
 import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 
 import { OrderSumarryComponent } from './order-sumarry/order-sumarry.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,9 +38,11 @@ import { OrderSumarryComponent } from './order-sumarry/order-sumarry.component';
     MenuItemComponent,
     ReviewsComponent,
     OrderSumarryComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
