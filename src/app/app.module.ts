@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { SharedModule } from './shared/shared.module';
 
 import { ROUTES } from './app.route';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common'
 import { AppComponent } from './app.component';
 
 import { HeaderComponent } from './header/header.component';
@@ -47,7 +48,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     SharedModule.forRoot(),
     RouterModule.forRoot(ROUTES, { preloadingStrategy: PreloadAllModules })
   ],
-  providers: [{ provide: LOCALE_ID, useValue: 'pt-BR' }],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }, { provide: LOCALE_ID, useValue: 'pt-BR' }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
