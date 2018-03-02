@@ -87,6 +87,6 @@ export class OrderComponent implements OnInit {
         console.log(`Order concluída: ${orderId}`);
         this.router.navigate(['/order-summary']);
         this.orderService.clear();
-      });
+      }, error => console.log(error));
   }
 }

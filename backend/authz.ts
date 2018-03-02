@@ -16,6 +16,7 @@ export const handAuthorization = (req: Request, resp: Response, next) => {
                 resp.status(403).json({ message: 'Você não está autorizado a acessar o recurso' });
             }
         });
+        //Todo
     }
 }
 

@@ -10,6 +10,7 @@ export class InputComponent implements OnInit, AfterContentInit {
   @Input() label: string;
   @Input() successMessage: string = 'Ok';
   @Input() errorMessage: string;
+  @Input() showTip: boolean = true;
 
   input: any;
 
@@ -32,7 +33,7 @@ export class InputComponent implements OnInit, AfterContentInit {
     return !this.input.valid && (this.input.dirty || this.input.touched);
   }
 
-  hasValid(): boolean {
+  hasSuccess(): boolean {
     return this.input.valid && (this.input.dirty || this.input.touched);
   }
 }

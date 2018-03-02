@@ -17,6 +17,7 @@ exports.handAuthorization = function (req, resp, next) {
                 resp.status(403).json({ message: 'Você não está autorizado a acessar o recurso' });
             }
         });
+        //Todo
     }
 };
 function extractToken(request) {

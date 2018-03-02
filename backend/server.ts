@@ -27,11 +27,15 @@ server.use('/orders', handAuthorization);
 // Use default router
 server.use(router)
 
-const options = {
-  cert: fs.readFileSync('./backend/keys/cert.pem'),
-  key: fs.readFileSync('./backend/keys/key.pem')
-}
+// const options = {
+//   cert: fs.readFileSync('./backend/keys/cert.pem'),
+//   key: fs.readFileSync('./backend/keys/key.pem')
+// }
 
-https.createServer(options, server).listen(3001, () => {
+// https.createServer(options, server).listen(3001, () => {
+//   console.log('JSON Server is running on https://localhost:3001')
+// })
+
+server.listen(3001, () => {
   console.log('JSON Server is running on https://localhost:3001')
 })
