@@ -33,7 +33,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   items(): CartItem[] {
-    console.log('return itens');
     return this.shoppingCartService.items;
   }
 
@@ -50,7 +49,6 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   addItem(item: any) {
-    console.log('addItem raise');
     this.shoppingCartService.addItem(item);
   }
 }

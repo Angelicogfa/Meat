@@ -20,12 +20,10 @@ export class ShoppingCartService {
     const total = this.items
       .map(t => t.value())
       .reduce((prev, value) => prev + value, 0);
-    console.log(`Total ${total}`);
     return total;
   }
 
   addItem(item: MenuItem) {
-    console.log('addItem service raise');
     let foundItem = this.items.find((mItem) => mItem.menuItem.id == item.id);
     if (foundItem) {
       this.increaseQty(foundItem);

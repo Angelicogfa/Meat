@@ -45,7 +45,6 @@ export class OrderService {
         if (this.loginService.isLoggedIn()) {
             _headers = _headers.set('Authorization', `Bearer ${this.loginService.User.accessToken}`)
         }
-        console.log(_headers);
         return this.http.post<Order>(`${MEAT_API}/orders`, order, { headers: _headers })
             .map(order => order.id);
     }

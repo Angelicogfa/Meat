@@ -13,7 +13,6 @@ export class MenuComponent implements OnInit {
 
   constructor(private restaurantService: RestaurantService,
     private route: ActivatedRoute) {
-      console.log('passei aqui');
   }
 
   ngOnInit() {
