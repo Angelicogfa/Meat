@@ -3,7 +3,7 @@ import { RadioOption } from '../shared/radio/radio-options.model';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item';
 import { Order, OrderItem } from './order.model';
 import { Router } from '@angular/router';
-
+import 'rxjs/add/operator/do';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from "@angular/forms";
 import { OrderService } from '../core/order.service';
 
@@ -13,11 +13,13 @@ import { OrderService } from '../core/order.service';
 })
 export class OrderComponent implements OnInit {
 
+
   emailPattern = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
   numberPattern = /^[0-9]*$/;
 
   orderForm: FormGroup;
   delivery: number = 8;
+  orderId: string = undefined;
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -46,7 +48,7 @@ export class OrderComponent implements OnInit {
   static equalsTo(group: AbstractControl): { [key: string]: boolean } {
     const email = group.get('email');
     const emailConfirmation = group.get('emailConfirmation');
-    
+
     if (!email || !emailConfirmation) {
       return undefined;
     }
@@ -54,7 +56,7 @@ export class OrderComponent implements OnInit {
     if (email.value !== emailConfirmation.value) {
       return { emailsNotMatch: true };
     }
-    
+
     return undefined;
   }
 
@@ -83,10 +85,14 @@ export class OrderComponent implements OnInit {
       .map(t => new OrderItem(t.quantity, t.menuItem.id));
 
     this.orderService.checkOrder(order)
+      .do(orderId => this.orderId = orderId)
       .subscribe(orderId => {
-        console.log(`Order concluída: ${orderId}`);
         this.router.navigate(['/order-summary']);
         this.orderService.clear();
       }, error => console.log(error));
+  }
+
+  IsOrderCompleted(): boolean {
+    return this.orderId !== undefined;
   }
 }
