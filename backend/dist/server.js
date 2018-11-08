@@ -4,7 +4,7 @@ var jsonServer = require("json-server");
 var auth_1 = require("./auth");
 var authz_1 = require("./authz");
 var server = jsonServer.create();
-var router = jsonServer.router('db.json');
+var router = jsonServer.router('../db.json');
 var middlewares = jsonServer.defaults();
 // Set default middlewares (logger, static, cors and no-cache)
 server.use(middlewares);
